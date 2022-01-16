@@ -34,4 +34,5 @@ build/
 .vscode/
 
 ###  排除logs文件夹 ###
-!**/logs/
+logs/
+log/
