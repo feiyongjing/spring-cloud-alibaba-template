@@ -1,0 +1,23 @@
+GET http://localhost:8081/order/addOrder
+Accept: application/json
+
+###
+GET http://localhost:8081/order/addOrder?productId=1&amount=10
+Accept: application/json
+
+###
+GET http://localhost:80/order-server/order/addOrder?productId=1&amount=10
+Accept: application/json
+
+###
+GET http://localhost:8081/order/getOrder?name=aaa&password=123
+Accept: application/json
+
+###
+http://192.168.0.101:8849/nacos/v1/ns/service/list?pageNo=1&pageSize=10&username=nacos&password=nacos
+http://192.168.0.101:8849/nacos/v1/ns/instance/list?serviceName=stock-server&username=nacos&password=nacos
+
+
+http://192.168.0.101:8849/nacos/v1/ns/instance?serviceName=stock-server&ip=192.168.0.101&port=8082&username=nacos&password=nacos
+
+http://192.168.0.101:8849/nacos/v1/ns/instance?serviceName=stock-server&ip=192.168.0.101&port=8082&groupName=stock-group&username=nacos&password=nacos

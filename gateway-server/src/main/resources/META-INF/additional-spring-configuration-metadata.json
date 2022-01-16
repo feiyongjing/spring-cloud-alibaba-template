@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "spring.cloud.sentinel.scg.fallback.response-body.code",
+      "type": "java.lang.String",
+      "description": "Description for spring.cloud.sentinel.scg.fallback.response-body.code."
+  }
+] }
