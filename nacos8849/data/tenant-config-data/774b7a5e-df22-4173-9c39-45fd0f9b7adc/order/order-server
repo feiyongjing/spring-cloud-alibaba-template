@@ -1,0 +1,44 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3308/seata_order?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+    driverClassName: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8849 # 连接的注册中心地址和端口
+        username: nacos # 连接注册中心地址登录用户名
+        password: nacos # 连接注册中心地址登录密码
+        namespace: 774b7a5e-df22-4173-9c39-45fd0f9b7adc
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8088 # sentinel控制台启动IP和端口
+      web-context-unify: false    # 默认是true将调用链路收敛
+      datasource:
+        - nacos:
+            server-addr: localhost:8849,localhost:8850,localhost:8851 # 连接的注册中心地址和端口
+            username: nacos # 连接注册中心地址登录用户名
+            password: nacos # 连接注册中心地址登录密码
+            data-id: order-sentinel
+            data-type: json
+            group-id: order
+            namespace: 774b7a5e-df22-4173-9c39-45fd0f9b7adc  # 以命名来隔离不同的服务，用于不同的环境
+            rule-type: flow
+
+feign:
+  sentinel:
+    enabled: true # 开启feign对sentinel的整合
+
+mybatis:
+  config-location: classpath:db/mybatis/config.xml
+
+# SpringBoot的默认日志级别是info, Feign的日志级别是debug不会输出
+logging:
+  level:
+    com.eric.order.service: debug
+
+abc: 123
